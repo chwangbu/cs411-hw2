@@ -12,7 +12,16 @@ configure_logger(logger)
 RANDOM_ORG_URL = os.getenv("RANDOM_ORG_URL",
                            "https://www.random.org/decimal-fractions/?num=1&dec=2&col=1&format=plain&rnd=new")
 
+"""
+Fetches a random float from random.org
 
+Returns:
+    random_number: a float
+
+Raises:
+    RunTimeError: If request to random.org fails
+    ValueError: If response cannot be taken as a float
+"""
 def get_random() -> float:
     try:
         response = requests.get(RANDOM_ORG_URL, timeout=5)
